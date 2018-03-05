@@ -17,7 +17,7 @@
         
       }
       
-      .jumbotron { margin-bottom: 0; }
+      .jumbotron { margin-bottom: 0; padding-bottom: 10px; }
       
       section { padding: 4rem 2rem; }
       
@@ -31,34 +31,28 @@
   <body>
     
     <header class="jumbotron">
-      
       <div class="container">
         <h1 class="display-4">JavaScript Encrypt/Decrypt</h1>
-        <p class="lead">OpenSSL RSA Encryption, Decryption using <a href="https://github.com/travist/jsencrypt" target="_blank" rel="noopener">jsencrypt</a>.</p>
-        <hr class="my-4">
-        <p>A utility page for encrypting and decrypting text with RSA Keys.</p>
+        <p class="lead">A utility page for encrypting and decrypting text with RSA Keys. Experimenting with encryption and decryption using keys with the <a href="https://github.com/travist/jsencrypt" target="_blank" rel="noopener">jsencrypt</a> library.</p>
       </div>
-      
     </header>
     
     <section class="keys">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <div class="alert alert-warning" role="alert">
-              The keys are saved to localstorage. Don't use this for anything serious. 
-            </div>
+            
           </div>
           <div class="col-6">     
             <div class="form-group">
               <label for="public-key-input">Public Key</label>
-              <textarea class="form-control" name="public-key-input" id="public-key-input" cols="30" rows="10"></textarea>
+              <textarea class="form-control" name="public-key-input" id="public-key-input" cols="30" rows="10" placeholder="-----BEGIN PUBLIC KEY-----"></textarea>
             </div>
           </div>
           <div class="col-6">
             <div class="form-group">
               <label for="private-key-input">Private Key</label>
-              <textarea class="form-control" name="private-key-input" id="private-key-input" cols="30" rows="10"></textarea>
+              <textarea class="form-control" name="private-key-input" id="private-key-input" cols="30" rows="10" placeholder="-----BEGIN RSA PRIVATE KEY-----"></textarea>
             </div>
           </div>
         </div>
@@ -71,7 +65,7 @@
           <div class="col">
            <div class="form-group">
               <label for="message-input">Plaintext</label>
-              <textarea class="form-control" name="message-input" id="message-plain" cols="30" rows="10"></textarea>
+              <textarea class="form-control" name="message-input" id="message-plain" cols="30" rows="10" placeholder="The quick brown fox..."></textarea>
            </div>
            <button id="encrypt" class="btn btn-primary">Encrypt</button>
           </div>
