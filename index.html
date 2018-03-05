@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>JavaScript Encrypt/Decrypt</title>
+    
+    <style>
+      
+      #public-key-input,
+      #private-key-input {
+        
+        font-family: monospace;
+        resize: none;
+        
+      }
+      
+      .jumbotron { margin-bottom: 0; }
+      
+      section { padding: 4rem 2rem; }
+      
+      section.workbench { background: #e9ecef; }
+            
+      label { font-weight: bold; }
+      
+    </style>
+    
+  </head>
+  <body>
+    
+    <header class="jumbotron">
+      
+      <div class="container">
+        <h1 class="display-4">JavaScript Encrypt/Decrypt</h1>
+        <p class="lead">OpenSSL RSA Encryption, Decryption using <a href="https://github.com/travist/jsencrypt" target="_blank" rel="noopener">jsencrypt</a>.</p>
+        <hr class="my-4">
+        <p>A utility page for encrypting and decrypting text with RSA Keys.</p>
+      </div>
+      
+    </header>
+    
+    <section class="keys">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="alert alert-warning" role="alert">
+              The keys are saved to localstorage. Don't use this for anything serious. 
+            </div>
+          </div>
+          <div class="col-6">     
+            <div class="form-group">
+              <label for="public-key-input">Public Key</label>
+              <textarea class="form-control" name="public-key-input" id="public-key-input" cols="30" rows="10"></textarea>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="private-key-input">Private Key</label>
+              <textarea class="form-control" name="private-key-input" id="private-key-input" cols="30" rows="10"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="workbench">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+           <div class="form-group">
+              <label for="message-input">Plaintext</label>
+              <textarea class="form-control" name="message-input" id="message-plain" cols="30" rows="10"></textarea>
+           </div>
+           <button id="encrypt" class="btn btn-primary">Encrypt</button>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="message-result">Ciphertext</label>
+              <textarea class="form-control" name="message-result" id="message-cypher" cols="30" rows="10"></textarea>
+            </div>
+            <button id="decrypt" class="btn btn-secondary float-right">Decrypt</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="vendor/jsencrypt.min.js"></script>
+    <script>
+      
+      $(document).ready(function() {
+        
+        $("#public-key-input").val(window.localStorage.getItem('public-key-input'));
+        $("#private-key-input").val(window.localStorage.getItem('private-key-input'));
+        
+        $("#public-key-input").change(function(e) {
+        
+          window.localStorage.setItem('public-key-input', $(this).val());
+        
+        });
+        
+        $("#private-key-input").change(function(e) {
+        
+          window.localStorage.setItem('private-key-input', $(this).val());
+        
+        });
+        
+        $("#encrypt").on('click', function() {
+                      
+          var message = $('#message-plain').val();
+          
+          if (message) {
+            
+            // We're encrypting
+            var encrypt = new JSEncrypt();
+                encrypt.setPublicKey($('#public-key-input').val());
+              
+            response = encrypt.encrypt(message);
+            
+            $("#message-plain").val("");
+            $("#message-cypher").val(response);
+            
+          }
+          
+        });
+            
+        $("#decrypt").on('click', function() {  
+            
+            var ciphertext = $('#message-cypher').val();
+            
+            if (ciphertext) {
+              
+               // We're decrypting
+              var decrypt = new JSEncrypt();
+                  decrypt.setPrivateKey($('#private-key-input').val());
+              
+              response = decrypt.decrypt(ciphertext);
+              
+              $("#message-cypher").val("");
+              $("#message-plain").val(response);
+              
+            }
+        
+        });
+        
+      });
+      
+    </script>
+  </body>
+</html>
