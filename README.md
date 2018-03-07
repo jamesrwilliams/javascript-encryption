@@ -1,6 +1,6 @@
-# RSA Example
+# Javascript Encryption
 
-A utility page for encrypting and decrypting text with RSA Keys. Experimenting with encryption and decryption using keys with the [jsencrypt](https://github.com/travist/jsencrypt) library. 
+A utility page for encrypting and decrypting text. Experimenting with encryption and decryption using different JavaScript encryption libraries.
 
 #### [Demo](https://jamesrwilliams.github.io/rsa-example/)
 
