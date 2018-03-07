@@ -3,27 +3,32 @@
   <head>
    
     <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>JavaScript Encryption</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>JavaScript Encrypt/Decrypt</title>
     
     <style>
       
       #public-key-input,
-      #private-key-input {
-        
-        font-family: monospace;
-        resize: none;
-        
-      }
+      #private-key-input,
+      #aes-key-input,
+      #message-cypher { font-family: monospace; }
+      
+      #message-cypher,
+      #message-plain { height: 200px; }
       
       .jumbotron { margin-bottom: 0; padding-bottom: 10px; }
       
-      section { padding: 4rem 2rem; }
+      section { padding: 2rem; }
+      textarea { resize: none; }
       
-      section.workbench { background: #e9ecef; }
-            
-      label { font-weight: bold; }
+      main,
+      nav.nav { background: #e9ecef; }
+      
+      nav { padding: 10px 0; }
       
     </style>
     
@@ -32,32 +37,116 @@
     
     <header class="jumbotron">
       <div class="container">
-        <h1 class="display-4">JavaScript Encrypt/Decrypt</h1>
-        <p class="lead">A utility page for encrypting and decrypting text with RSA Keys. Experimenting with encryption and decryption using keys with the <a href="https://github.com/travist/jsencrypt" target="_blank" rel="noopener">jsencrypt</a> library.</p>
-      </div>
+        <div class="row">
+          <div class="col">
+            <h1 class="display-4">JavaScript Encryption</h1>
+            <p class="lead">A utility page for encrypting and decrypting text. Experimenting with encryption and decryption using different JavaScript encryption libraries.</p>
+          </div>
+        </div>
+       </div>
     </header>
     
-    <section class="keys">
+    <nav class="nav">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            
-          </div>
-          <div class="col-6">     
-            <div class="form-group">
-              <label for="public-key-input">Public Key</label>
-              <textarea class="form-control" name="public-key-input" id="public-key-input" cols="30" rows="10" placeholder="-----BEGIN PUBLIC KEY-----"></textarea>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="form-group">
-              <label for="private-key-input">Private Key</label>
-              <textarea class="form-control" name="private-key-input" id="private-key-input" cols="30" rows="10" placeholder="-----BEGIN RSA PRIVATE KEY-----"></textarea>
-            </div>
+            <ul class="nav nav-pills" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="rsa-tab" data-toggle="tab" href="#rsa" role="tab" aria-controls="rsa" aria-selected="false">RSA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="aes-tab" data-toggle="tab" href="#aes" role="tab" aria-controls="aes" aria-selected="true">AES</a>
+              </li>
+              
+            </ul>
           </div>
         </div>
       </div>
-    </section>
+    </nav>
+    
+    <main class="tab-content" id="myTabContent">
+  
+      <section class="rsa tab-pane fade show active" id="rsa" role="tabpanel" aria-labelledby="home-tab">
+        
+        <div class="intro">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                
+                <h3>RSA</h3>
+                <p>OpenSSL RSA Encryption, Decryption using <a href="https://github.com/travist/jsencrypt" target="_blank" rel="noopener">jsencrypt</a>.</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="keys">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                
+              </div>
+              <div class="col-6">     
+                <div class="form-group">
+                  <label for="public-key-input">Public Key</label>
+                  <textarea class="form-control" name="public-key-input" id="public-key-input" cols="30" rows="10" placeholder="-----BEGIN PUBLIC KEY-----"></textarea>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="private-key-input">Private Key</label>
+                  <textarea class="form-control" name="private-key-input" id="private-key-input" cols="30" rows="10" placeholder="-----BEGIN RSA PRIVATE KEY-----"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+      
+      <section class="tab-pane" id="aes" role="tabpanel" aria-labelledby="profile-tab">
+        
+        <div class="intro">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                
+                <div class="alert alert-info" role="alert">This is a WIP!</div>
+                
+                <h3>AES</h3>
+                <p>Encryption using the AES Cipher-Block Chaining mode. Made possible by <a href="https://github.com/ricmoo/aes-js" target="_blank" rel="noopener">aes-js</a>. Read more about <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_Block_Chaining_(CBC)" target="_blank">CBC</a>.</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="keys">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                
+              </div>
+              <div class="col-12">     
+                <div class="form-group">
+                  <label for="public-key-input">Encryption Key</label>
+                  <input class="form-control" name="aes-key-input" id="aes-key-input" cols="30" rows="5" placeholder="[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]" />
+                  <small class="form-text text-muted">A random string of bits created explicitly for scrambling and unscrambling data</small>
+                </div>
+                <div class="form-group">
+                  <label for="public-key-input">Initialization Vector</label>
+                  <input class="form-control" name="aes-key-input" id="aes-key-input" cols="30" rows="5" placeholder="[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]" />
+                  <small class="form-text text-muted">An initialization vector is a nonce to make each message unique</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+  
+    </main>
     
     <section class="workbench">
       <div class="container">
@@ -67,7 +156,7 @@
               <label for="message-input">Plaintext</label>
               <textarea class="form-control" name="message-input" id="message-plain" cols="30" rows="10" placeholder="The quick brown fox..."></textarea>
            </div>
-           <button id="encrypt" class="btn btn-primary">Encrypt</button>
+           <button id="encrypt" class="btn btn-success">Encrypt</button>
           </div>
           <div class="col">
             <div class="form-group">
@@ -78,11 +167,16 @@
           </div>
         </div>
       </div>
-    </section>
-
+    </section>  
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <!-- START Encryption Libs -->
     <script src="vendor/jsencrypt.min.js"></script>
+    <script src="vendor/aes-js.js"></script>
+    <!-- END Encryption Libs -->
+    
     <script>
       
       $(document).ready(function() {

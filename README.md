@@ -4,7 +4,11 @@ A utility page for encrypting and decrypting text with RSA Keys. Experimenting w
 
 #### [Demo](https://jamesrwilliams.github.io/rsa-example/)
 
+## Encryption Implementations
+
+- [RSA with jsencrypt](https://github.com/travist/jsencrypt)
+- [AES with aes-js](https://github.com/ricmoo/aes-js)
+
 ## Credits
 
-- [jsencrypt](https://github.com/travist/jsencrypt)
 - [bootstrap](https://github.com/twbs/bootstrap)
