@@ -1,14 +1,12 @@
-# Javascript Encryption
+# Exploring javascript encryption
 
-A utility page for encrypting and decrypting text. Experimenting with encryption and decryption using different JavaScript encryption libraries.
+A demonstration page for encrypting and decrypting text using RSA and AES encryption methods on the client side using Javascript.
+Experimenting with encryption and decryption using different JavaScript encryption libraries.
 
-#### [Demo](https://jamesrwilliams.github.io/rsa-example/)
+See the demonstration page here: [jamesrwilliams.github.io/javascript-encryption/](https://jamesrwilliams.github.io/javascript-encryption/).
 
-## Encryption Implementations
+## Built with:
 
-- [RSA with jsencrypt](https://github.com/travist/jsencrypt)
-- [AES with aes-js](https://github.com/ricmoo/aes-js)
-
-## Credits
-
-- [bootstrap](https://github.com/twbs/bootstrap)
+- [RSA with travist/jsencrypt](https://github.com/travist/jsencrypt)
+- [AES with ricmoo/aes-js](https://github.com/ricmoo/aes-js)
+- [twbs/bootstrap](https://github.com/twbs/bootstrap)
