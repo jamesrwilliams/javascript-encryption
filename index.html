@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-	<title>JavaScript Encryption</title>
+	<title>JavaScript Encryption - James R. Williams</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -14,7 +14,7 @@
 	<style>
 
 		body {
-			background: #e9ecef;
+			background: #ffffff;
 		}
 
 		#public-key-input,
@@ -35,9 +35,13 @@
 			height: 200px;
 		}
 
+		* { -webkit-font-smoothing: antialiased; }
+
+		p.nav-link.disabled { color: white; padding-left: 0; }
+
 		.jumbotron {
 			margin-bottom: 0;
-			-webkit-font-smoothing: antialiased;
+
 			color: white;
 			padding-bottom: 10px;
 		}
@@ -56,7 +60,7 @@
 		}
 
 		main {
-			background: #fff;
+			background: #e9ecef;
 			border-bottom: 1px solid #ddd;
 		}
 
@@ -78,9 +82,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<h1 class="display-4">JavaScript Encryption</h1>
-				<p class="lead">A utility page for encrypting and decrypting text using RSA and AES encryption methods. Experimenting with encryption and
-					decryption using different JavaScript encryption libraries.</p>
+				<h1 class="display-4">Exploring javascript encryption</h1>
+				<p class="lead">A demonstration page for encrypting and decrypting text using RSA and AES encryption methods on the client side using Javascript. Experimenting with encryption and
+					decryption using different JavaScript encryption libraries. View project source on GitHub here: <a href="https://github.com/jamesrwilliams/javascript-encryption">jamesrwilliams/javascript-encryption</a></p>
+				<p></p>
 			</div>
 		</div>
 	</div>
@@ -91,6 +96,9 @@
 		<div class="row">
 			<div class="col-12">
 				<ul class="nav nav-pills" id="myTab" role="tablist">
+					<li class="nav-item">
+						<p class="nav-link disabled">Select demo:</p>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link active" id="rsa-tab" data-toggle="tab" href="#rsa" role="tab" aria-controls="rsa" aria-selected="true">RSA</a>
 					</li>
