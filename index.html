@@ -1,333 +1,460 @@
 <!doctype html>
 <html lang="en">
-  <head>
-   
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    
-    <title>JavaScript Encryption</title>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
-    <style>
-      
-      body { background: #e9ecef; }
-      
-      #public-key-input,
-      #private-key-input,
-      #aes-key-input,
-      #aes-iv-input,
-      #message-cypher { font-family: monospace; }
-      
-      #message-cypher,
-      #message-plain { height: 200px; }
-      
-      .jumbotron { margin-bottom: 0; padding-bottom: 10px; }
-      
-      section { padding: 2rem; }
-      textarea { resize: none; }
-      
-      main { background: #fff; border-bottom: 1px solid #ddd; }
-      
-      hr { border-color: #e9ecef; }
-      
-      nav { padding: 10px 0 30px; border-bottom: 1px solid #ddd; }
-      
-    </style>
-    
-  </head>
-  <body>
-    
-    <header class="jumbotron">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <h1 class="display-4">JavaScript Encryption</h1>
-            <p class="lead">A utility page for encrypting and decrypting text. Experimenting with encryption and decryption using different JavaScript encryption libraries.</p>
-          </div>
-        </div>
-       </div>
-    </header>
-    
-    <nav class="nav">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <ul class="nav nav-pills" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link" id="rsa-tab" data-toggle="tab" href="#rsa" role="tab" aria-controls="rsa" aria-selected="false">RSA</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" id="aes-tab" data-toggle="tab" href="#aes" role="tab" aria-controls="aes" aria-selected="true">AES</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
+<head>
 
-    <main class="tab-content" id="myTabContent">
-  
-      <section class="rsa tab-pane" id="rsa" role="tabpanel" aria-labelledby="home-tab">
-        
-        <div class="intro">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                
-                <h3>RSA</h3>
-                <p>Public key (asymmetric) encryption/decryption with RSA using <a href="https://github.com/travist/jsencrypt" target="_blank" rel="noopener">jsencrypt</a>.</p>
-                
-                <hr>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="keys">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                
-              </div>
-              <div class="col-6">     
-                <div class="form-group">
-                  <label for="public-key-input">Public Key</label>
-                  <textarea class="form-control" name="public-key-input" id="public-key-input" cols="30" rows="10" placeholder="-----BEGIN PUBLIC KEY-----"></textarea>
-                  <small class="form-text text-muted"></small>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-group">
-                  <label for="private-key-input">Private Key</label>
-                  <textarea class="form-control" name="private-key-input" id="private-key-input" cols="30" rows="10" placeholder="-----BEGIN RSA PRIVATE KEY-----"></textarea>
-                  <small class="form-text text-muted"></small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-      </section>
-      
-      <section class="tab-pane fade show active" id="aes" role="tabpanel" aria-labelledby="profile-tab">
-        
-        <div class="intro">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                
-                <h3>AES - Counter</h3>
-                <p>Encryption using the AES Counter mode of operation, utilizing <a href="https://github.com/ricmoo/aes-js" target="_blank" rel="noopener">aes-js</a>. Read more about the <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_(CTR)" target="_blank">Counter</a> mode of operation.</p>
-                
-                <hr>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="keys">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                
-              </div>
-              <div class="col-12">     
-                <div class="form-group">
-                  <label for="aes-key-input">Key</label>
-                  <input class="form-control" name="aes-key-input" id="aes-key-input" cols="30" rows="5" placeholder="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]" />
-                  <small class="form-text text-muted">A random string of bits created explicitly for scrambling and unscrambling data as either 128-bit, 192-bit or 256-bit arrays. Use a sample key: <a href="#" class="sample-key" data-size="128">128-bit</a>, <a href="#" class="sample-key" data-size="192">192-bit</a>, or <a href="#" class="sample-key" data-size="256">256-bit</a>.</small>
-                </div>
-                <div class="form-group">
-                  <label for="aes-counter">Counter</label>
-                  <input type="text" class="form-control" name="aes-counter" id="aes-counter" placeholder="01234567">
-                  <small class="form-text text-muted">Enter a specific number here to decrypt, or leave blank for randomly generated counter.</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-      </section>
-  
-    </main>
-    
-    <section class="workbench">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-           <div class="form-group">
-              <label for="message-input">Plaintext</label>
-              <textarea class="form-control" name="message-input" id="message-plain" cols="30" rows="10" placeholder="The quick brown fox..."></textarea>
-           </div>
-           <button id="encrypt" class="btn btn-success">Encrypt</button>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="message-result">Ciphertext</label>
-              <textarea class="form-control" name="message-result" id="message-cypher" cols="30" rows="10"></textarea>
-            </div>
-            <button id="decrypt" class="btn btn-secondary float-right">Decrypt</button>
-          </div>
-        </div>
-      </div>
-    </section>  
-    
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-    <!-- START Encryption Libs -->
-    <script src="vendor/jsencrypt.min.js"></script>
-    <script src="vendor/aes-js.js"></script>
-    <!-- END Encryption Libs -->
-    
-    <script>
-      
-      $(document).ready(function() {
-        
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<title>JavaScript Encryption</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<style>
+
+		body {
+			background: #e9ecef;
+		}
+
+		#public-key-input,
+		#private-key-input,
+		#aes-key-input,
+		#aes-iv-input,
+		#message-cypher {
+			font-family: monospace;
+		}
+
+		#public-key-input,
+		#private-key-input {
+
+		}
+
+		#message-cypher,
+		#message-plain {
+			height: 200px;
+		}
+
+		.jumbotron {
+			margin-bottom: 0;
+			-webkit-font-smoothing: antialiased;
+			color: white;
+			padding-bottom: 10px;
+		}
+
+		.jumbotron,
+		.nav {
+			background: #0e141a;
+		}
+
+		section {
+			padding: 2rem;
+		}
+
+		textarea {
+			resize: none;
+		}
+
+		main {
+			background: #fff;
+			border-bottom: 1px solid #ddd;
+		}
+
+		hr {
+			border-color: #e9ecef;
+		}
+
+		nav {
+			padding: 10px 0 30px;
+			border-bottom: 1px solid #ddd;
+		}
+
+	</style>
+
+</head>
+<body>
+
+<header class="jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1 class="display-4">JavaScript Encryption</h1>
+				<p class="lead">A utility page for encrypting and decrypting text using RSA and AES encryption methods. Experimenting with encryption and
+					decryption using different JavaScript encryption libraries.</p>
+			</div>
+		</div>
+	</div>
+</header>
+
+<nav class="nav">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<ul class="nav nav-pills" id="myTab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" id="rsa-tab" data-toggle="tab" href="#rsa" role="tab" aria-controls="rsa" aria-selected="true">RSA</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="aes-tab" data-toggle="tab" href="#aes" role="tab" aria-controls="aes" aria-selected="false">AES</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<main class="tab-content" id="myTabContent">
+
+	<section class="rsa tab-pane fade show active" id="rsa" role="tabpanel" aria-labelledby="home-tab">
+
+		<div class="intro">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+
+						<h3>RSA</h3>
+						<p>
+							Public key (asymmetric) encryption/decryption with RSA using
+							<a href="https://github.com/travist/jsencrypt" target="_blank" rel="noopener">jsencrypt</a>.
+						</p>
+
+						<hr>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="keys">
+			<div class="container">
+				<div class="row">
+					<div class="col-6">
+						<div class="form-group">
+							<label for="private-key-input">Private Key</label>
+							<textarea class="form-control" name="private-key-input" id="private-key-input" cols="30"
+							          rows="5" placeholder="-----BEGIN RSA PRIVATE KEY-----"></textarea>
+							<small class="form-text text-muted">Load a sample RSA private & public key:
+								<a href="#" class="sample-key" data-size="rsa-1024">1024-bit</a>,
+								<a href="#" class="sample-key" data-size="rsa-2048">2048-bit</a>. <strong>For the love of everything don't actually use these keys for anything important.</strong>
+							</small>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="form-group">
+							<label for="public-key-input">Public Key</label>
+							<textarea class="form-control" name="public-key-input" id="public-key-input" cols="30"
+							          rows="5" placeholder="-----BEGIN PUBLIC KEY-----"></textarea>
+							<small class="form-text text-muted"></small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<section class="tab-pane fade" id="aes" role="tabpanel" aria-labelledby="profile-tab">
+
+		<div class="intro">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+
+						<h3>AES (Advanced Encryption Standard)</h3>
+						<p>
+							Encryption using the AES Counter (CTR) mode of operation, utilizing
+							<a href="https://github.com/ricmoo/aes-js" target="_blank" rel="noopener">aes-js</a>.
+							Read more about the
+							<a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_(CTR)" target="_blank">Counter</a>
+							mode of operation.
+						</p>
+
+						<hr>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="keys">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+
+					</div>
+					<div class="col-12">
+						<div class="form-group">
+							<label for="aes-key-input">Key</label>
+							<input class="form-control" name="aes-key-input" id="aes-key-input" cols="30" rows="5"
+							       placeholder="[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]"/>
+							<small class="form-text text-muted">A random string of bits created explicitly for
+								scrambling and unscrambling data as either 128-bit, 192-bit or 256-bit arrays. Use a
+								sample key:
+								<a href="#" class="sample-key" data-size="aes-128">128-bit</a>,
+								<a href="#" class="sample-key" data-size="aes-192">192-bit</a>,
+								or <a href="#" class="sample-key" data-size="aes-256">256-bit</a>.
+							</small>
+						</div>
+						<div class="form-group">
+							<label for="aes-counter">Counter</label>
+							<input type="text" class="form-control" name="aes-counter" id="aes-counter"
+							       placeholder="01234567">
+							<small class="form-text text-muted">Enter a specific number here to decrypt, or leave blank
+								for randomly generated counter.
+							</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+	<a href="https://github.com/jamesrwilliams/javascript-encryption" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#04AA75; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+</main>
+
+<section class="workbench">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<label for="message-input">Plaintext</label>
+					<textarea class="form-control" name="message-input" id="message-plain" cols="30" rows="10"
+					          placeholder="The quick brown fox..."></textarea>
+				</div>
+				<button id="encrypt" class="btn btn-success">Encrypt</button>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label for="message-result">Ciphertext</label>
+					<textarea class="form-control" name="message-result" id="message-cypher" cols="30"
+					          rows="10"></textarea>
+				</div>
+				<button id="decrypt" class="btn btn-secondary float-right">Decrypt</button>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<!-- START Encryption Libs -->
+<script src="vendor/jsencrypt.min.js"></script>
+<script src="vendor/aes-js.js"></script>
+<!-- END Encryption Libs -->
+
+<script>
+
+    $(document).ready(function () {
+
         /**
          * Save Field Values to LocalStorage for sessionPersistance;
          * @type {Array}
          */
         let saveFields = ['aes-key-input', 'public-key-input', 'private-key-input', 'aes-counter'];
-        
-        for (var i = 0; i < saveFields.length; i++) {
-        
-          let $id = "#" + saveFields[i];
-          let id = saveFields[i];
-          
-          $($id).val(window.localStorage.getItem(id));
-          
-          $($id).change(function() {
 
-            window.localStorage.setItem(id, $(this).val());
-            
-          });
-        
+        for (var i = 0; i < saveFields.length; i ++) {
+
+            let $id = "#" + saveFields[i];
+            let id = saveFields[i];
+
+            $($id).val(window.localStorage.getItem(id));
+
+            $($id).change(function () {
+
+                window.localStorage.setItem(id, $(this).val());
+
+            });
+
         }
-        
+
         var counter;
-        
+
         /**
          * Encrypt Handler
          */
-        $("#encrypt").on('click', function() {
-          
-          var message = $('#message-plain').val();
-          var currentTab = $(".nav-link.active").attr('aria-controls');
-          var counter = $("#aes-counter").val();
-          
-          if (!counter) {
-            
-            counter = Math.floor(Math.random() * 1000000000);
-            $("#aes-counter").val(counter);
-            
-          }
-          
-          if (message) {
-            
-            if (currentTab === 'aes') {
-            
-              var key = JSON.parse($("#aes-key-input").val());
-              counter = JSON.parse($("#aes-counter").val());
-              
-              // Convert text to bytes
-              var textBytes = aesjs.utils.utf8.toBytes(message);
+        $("#encrypt").on('click', function () {
 
-              // The counter is optional, and if omitted will begin at 1
-              var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(counter));
-              var encryptedBytes = aesCtr.encrypt(textBytes);
+            var message = $('#message-plain').val();
+            var currentTab = $(".nav-link.active").attr('aria-controls');
+            var counter = $("#aes-counter").val();
 
-              // To print or store the binary data, you may convert it to hex
-              var encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
+            if (! counter) {
 
-              // When ready to decrypt the hex string, convert it back to bytes
-              $("#message-plain").val("");
-              $("#message-cypher").val(encryptedHex);
-              $("#aes-counter").val(counter);
-              
-            
-            } else if(currentTab === 'rsa'){
-              
-              var encrypt = new JSEncrypt();
-                  encrypt.setPublicKey($('#public-key-input').val());
-                  
-                  $("#message-plain").val("");
-                  $("#message-cypher").val(encrypt.encrypt(message));
-              
+                counter = Math.floor(Math.random() * 1000000000);
+                $("#aes-counter").val(counter);
+
             }
-            
-          }
-          
+
+            if (message) {
+
+                if (currentTab === 'aes') {
+
+                    var key = JSON.parse($("#aes-key-input").val());
+                    counter = JSON.parse($("#aes-counter").val());
+
+                    // Convert text to bytes
+                    var textBytes = aesjs.utils.utf8.toBytes(message);
+
+                    // The counter is optional, and if omitted will begin at 1
+                    var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(counter));
+                    var encryptedBytes = aesCtr.encrypt(textBytes);
+
+                    // To print or store the binary data, you may convert it to hex
+                    var encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
+
+                    // When ready to decrypt the hex string, convert it back to bytes
+                    $("#message-plain").val("");
+                    $("#message-cypher").val(encryptedHex);
+                    $("#aes-counter").val(counter);
+
+
+                } else if (currentTab === 'rsa') {
+
+                    var encrypt = new JSEncrypt();
+                    encrypt.setPublicKey($('#public-key-input').val());
+
+                    $("#message-plain").val("");
+                    $("#message-cypher").val(encrypt.encrypt(message));
+
+                }
+
+            }
+
         });
-          
+
         /**
          * Decrypt Handler
-         */  
-        $("#decrypt").on('click', function() {  
-            
+         */
+        $("#decrypt").on('click', function () {
+
             var ciphertext = $('#message-cypher').val();
             var currentTab = $(".nav-link.active").attr('aria-controls');
-            
-            if (ciphertext) {
-            
-              if (currentTab === 'aes') {
-                
-                var key = JSON.parse($("#aes-key-input").val());
-                counter = JSON.parse($("#aes-counter").val());
-                
-                // When ready to decrypt the hex string, convert it back to bytes
-                var encryptedBytes = aesjs.utils.hex.toBytes(ciphertext);
-                
-                // The counter mode of operation maintains internal state, so to
-                // decrypt a new instance must be instantiated.
-                var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(counter));
-                var decryptedBytes = aesCtr.decrypt(encryptedBytes);
 
-                // Convert our bytes back into text
-                var decryptedText = aesjs.utils.utf8.fromBytes(decryptedBytes);
-                
-                $("#message-cypher").val("");
-                $("#message-plain").val(decryptedText);
-                 
-                                
-              } else if(currentTab === 'rsa'){
-                
-                 // We're decrypting
-                var decrypt = new JSEncrypt();
+            if (ciphertext) {
+
+                if (currentTab === 'aes') {
+
+                    var key = JSON.parse($("#aes-key-input").val());
+                    counter = JSON.parse($("#aes-counter").val());
+
+                    // When ready to decrypt the hex string, convert it back to bytes
+                    var encryptedBytes = aesjs.utils.hex.toBytes(ciphertext);
+
+                    // The counter mode of operation maintains internal state, so to
+                    // decrypt a new instance must be instantiated.
+                    var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(counter));
+                    var decryptedBytes = aesCtr.decrypt(encryptedBytes);
+
+                    // Convert our bytes back into text
+                    var decryptedText = aesjs.utils.utf8.fromBytes(decryptedBytes);
+
+                    $("#message-cypher").val("");
+                    $("#message-plain").val(decryptedText);
+
+
+                } else if (currentTab === 'rsa') {
+
+                    // We're decrypting
+                    var decrypt = new JSEncrypt();
                     decrypt.setPrivateKey($('#private-key-input').val());
-                
-                response = decrypt.decrypt(ciphertext);
-                
-                $("#message-cypher").val("");
-                $("#message-plain").val(response);
-                
-              }
-            
+
+                    response = decrypt.decrypt(ciphertext);
+
+                    $("#message-cypher").val("");
+                    $("#message-plain").val(response);
+
+                }
+
             }
-        
+
         });
-        
-        $(".sample-key").on('click', function(event) {
-          event.preventDefault();
-          
-          $("#aes-key-input").val('');
-          
-          var keys = {
-            
-            "128": "[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]",
-            "192": "[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]",
-            "256": "[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]"
-          }
-          
-          $("#aes-key-input").val(keys[$(this).data('size')]);
-          
-        });        
-      });
-      
-    </script>
-  </body>
+
+        $(".sample-key").on('click', function (event) {
+            event.preventDefault();
+
+            let target = $(this).data('size');
+
+            $("#aes-key-input").val('');
+            $("#rsa-key-input").val('');
+
+            var keys = {
+
+                "aes-128": "[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]",
+                "aes-192": "[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]",
+                "aes-256": "[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]",
+	            "rsa-1024": ["-----BEGIN RSA PRIVATE KEY-----\n" +
+                "MIICXAIBAAKBgQCwGaV4tixQ78FRLmev2gjH37sAbzOXD/m/Sg3F6Dv6TPeZjv7r\n" +
+                "Io1lDu0Yjc/OR67cCsZLCVPTROevT05uTneSiK7sfe9W6SbTmm+vOY2pzK5xIyvW\n" +
+                "KGyJOEzU7wEcU7YoH7YZxuIkMuDhYiRygTOe0HpK5L0bL6U5xaOWqalxvwIDAQAB\n" +
+                "AoGAMC5kKrnVODPQ9bA3qFKEcoNRO9YxDFTPpTnSuOJIfrxORlJshtMGUq8Zyc0L\n" +
+                "HUpZmlTMWj1sFPLWXQ3azK1lY1rhOOTdJPNZFPnbsXOMA+r7uyNm/4/XF2Uk2Ira\n" +
+                "DVTBbmes3fw4KhTVmaM5StAlKei00xbq0pc+N4wJ06TVQBkCQQDhsWwKEu8uVgVg\n" +
+                "6aRMRbtvLEd34kVPbSz2VLQ62LXreQOVu0/DlEMzcPUnRFy/Ql3w2lcUHD+5Mxp7\n" +
+                "uyoOjr9FAkEAx79iz/ms85+H+6NDX+AaPQTlI0h+3GomC3TXZVrWf452Qjvs54/c\n" +
+                "1920rk4z3IbCyAdgpt6ZC502is47BuHrMwJAR9fwqmxIkxly8NyvHlB8T/FqdrEi\n" +
+                "mxwH2gowrSLbFjAZggp0Y6/IjJGCmJNcas23lboLSi2L42pvHcAArU2neQJBALQ9\n" +
+                "xatHb8ISJUFzC/u6m9KN1TnmU9sOya+yyh6CPmWxppKTwm0dSrlbLIvQs0l+LMsU\n" +
+                "pSlOWam6Pho4h9jpCTMCQDM+9wmtLlxGiQxVlerz4gOLOBZykgcGuse6y4ouY4bC\n" +
+                "HgiWIQCag5+V45Lsc/RcuoJh0cZql3T1GZg/QOnGWDk=\n" +
+                "-----END RSA PRIVATE KEY-----","-----BEGIN PUBLIC KEY-----\n" +
+                "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCwGaV4tixQ78FRLmev2gjH37sA\n" +
+                "bzOXD/m/Sg3F6Dv6TPeZjv7rIo1lDu0Yjc/OR67cCsZLCVPTROevT05uTneSiK7s\n" +
+                "fe9W6SbTmm+vOY2pzK5xIyvWKGyJOEzU7wEcU7YoH7YZxuIkMuDhYiRygTOe0HpK\n" +
+                "5L0bL6U5xaOWqalxvwIDAQAB\n" +
+                "-----END PUBLIC KEY-----"],
+	            "rsa-2048": ["-----BEGIN RSA PRIVATE KEY-----\n" +
+                "MIIEogIBAAKCAQEA0fc6/3/gVeMxQCQZQxSOwTJCCleRu/5eBUiInAd1VpJfRZoY\n" +
+                "Khn/Zng9Wx2oQEFq3RTb6ZYaKfxJ1jD4j9RcBxfp9PGatmUvit2ZM/1q9dE+Z2Hr\n" +
+                "g9D9j7JN2vO5Io1MsmALgOvegNon2rGPONFcoiQpzE5h//FGCtjUtq9If5xWO+i6\n" +
+                "p4UTgCSgE2Y0b2AMLOOKwTah9VA8O4H2O46zml/Xe0/YVhAzuwa0WfmNOA/WHAIz\n" +
+                "3ZUTZRSNU33UrG+j3ET+EgO7Rg4FF11u6Wo6AwVN8QFkUHrMqEtT+xMx25JvP6tF\n" +
+                "H7YV78Z4V+/wxBbkP3+4OD+iErwvnWfvuIaawQIDAQABAoIBAE2nMAy6kI9zPQ3J\n" +
+                "zAYBHmLZYY9Nn7p1cvRlRRDfuUfRTqcBPJqljs2o/pgqOcW56/nj8wlK2FZa1jv/\n" +
+                "VI5tLbP55i8PA/cdKR4korqVqO9M+dVmY6IWsxBoE1888GWU+J6n4tlFYr8o78B0\n" +
+                "FtIerDHTShojix8LbqooU1NVNGztCxtN60SAJ5b+WL79YfmVxeeLsjXGfcAv20PO\n" +
+                "xzKF8s2B2rL5DNy/D+gmtvgDeyVtvS/GT9WteF2RoF2lhTHXtOcJ5Y2lLBYuMm2M\n" +
+                "sV5HW8dxp5tmuR0aDDxrMPCL1pBsxonh46Kbe/fvicME6gk3jDD2w3mC5WWgQVxG\n" +
+                "nTXqygECgYEA+D6G2xCqJvuUoSorBvkn3qq9MlfXmOSY/3WIZktTC/gSYJyv6FmW\n" +
+                "sKgBdd1zLrM6h+LLkoKoUP5R8eD4ysb1vEjLAB10V66TqS+slsHFFyU29BIQfrn3\n" +
+                "mKKkEKbkj19dOebYYlsAFehxKzKloUQwcrUddqOORcfKKnsXz5eI4vECgYEA2IaM\n" +
+                "v7AVScR743pp/71TM1iE1b65rtEogmFG6D5WQcJnZvnK7R2Tl9OD/xtvVPt/aNLU\n" +
+                "1Lp/GuDVxGoHcs3fDxHfjJwLIqnv7Y6D4hKj6RAmcpMaVh3XPau2y7p0pgf9ylOa\n" +
+                "BoaduQQw4xOv3Oa8SVuKycjX/Ihl+scZt0OylNECgYA7D2U2KTjSHXi2/zlNZ2m8\n" +
+                "6BIrMArzLS/ZVzUkYTdY2aRFqAGR3f6j+NSgHheRPMLoIWUdbkhtPJRyX3vRgpRk\n" +
+                "P01MsbVERxyKW/VLyL4DS69PUhzqiYQGpGs0KwClu6KKbAl/HPdgPvTtuhb9zyNX\n" +
+                "pw9jcnYe0/GdObvof7zpgQKBgGCCYFvURTjTDhFPb82gemQpcVPAJg1IhtDOQQel\n" +
+                "OVcoKmSYtB1KEI4cpfngJZhwXNLBHkIPOjYlvsJELDu8jU6vPb/zkXcK3bk5y4jJ\n" +
+                "nCt2mlx5OsTlmhmP3vMhkXqrlzBGYSHFgKmFt7CPBtTkN0pPNiZIkhSqSyIi+lBY\n" +
+                "KVHxAoGAAsJrcAmhbVMUjCTHm9Tvl3xD5sn+pJ4VwbxgvJj6mnUCb5KrQO5y7ctR\n" +
+                "fpXdVgR0MO+K75NSyBAGfSmT2dMx+Ulro1u/vFk/gmezoG0y/EQjbfPMQnjLMKqK\n" +
+                "chYFjqS8TZBiyGQ2gfVG7419EiMgUJWR2PbW+oM9CT5fqvRyzv0=\n" +
+                "-----END RSA PRIVATE KEY-----","-----BEGIN PUBLIC KEY-----\n" +
+                "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0fc6/3/gVeMxQCQZQxSO\n" +
+                "wTJCCleRu/5eBUiInAd1VpJfRZoYKhn/Zng9Wx2oQEFq3RTb6ZYaKfxJ1jD4j9Rc\n" +
+                "Bxfp9PGatmUvit2ZM/1q9dE+Z2Hrg9D9j7JN2vO5Io1MsmALgOvegNon2rGPONFc\n" +
+                "oiQpzE5h//FGCtjUtq9If5xWO+i6p4UTgCSgE2Y0b2AMLOOKwTah9VA8O4H2O46z\n" +
+                "ml/Xe0/YVhAzuwa0WfmNOA/WHAIz3ZUTZRSNU33UrG+j3ET+EgO7Rg4FF11u6Wo6\n" +
+                "AwVN8QFkUHrMqEtT+xMx25JvP6tFH7YV78Z4V+/wxBbkP3+4OD+iErwvnWfvuIaa\n" +
+                "wQIDAQAB\n" +
+                "-----END PUBLIC KEY-----"]
+            };
+
+            if( target.indexOf('aes') > -1 ) {
+                $("#aes-key-input").val(keys[target]);
+            } else if( target.indexOf('rsa') > -1 ) {
+                $('#public-key-input').val(keys[target][1]);
+                $('#private-key-input').val(keys[target][0]);
+            }
+
+        });
+
+    });
+
+</script>
+</body>
 </html>
